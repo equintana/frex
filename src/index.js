@@ -1,29 +1,40 @@
 /*
- * First example, creating custome components using the default
- * syntax
- *
+ * Second example, using JSX to create custom components
  */
 
-var ReactDom = require('react-dom');
-var React = require('react');
-var { Component, createElement } = React
+import React, { Component, PropTypes } from 'react';
+import { render } from 'react-dom';
 
 class MyFirstComponent extends Component {
  render(){
-   return createElement('span', null, this.props.title);
+   return <span>{this.props.title}</span>;
  }
 }
 
-function MySecondComponent( props ){
-  return createElement('span', null, props.title);
+MyFirstComponent.propTypes = {
+  title: PropTypes.string.isRequired
 }
 
-ReactDom.render( createElement('h1', { className: 'hola', id: 'some_id'}, '1er ',
-                                     createElement('span', null, '2do '),
-                                     createElement( MyFirstComponent, { title: 'title class ' }),
-                                     createElement( MySecondComponent, { title: 'title function ' })
-                              )
-                  ,document.getElementById('root')
-               );
+MyFirstComponent.defaultProps = {
+  title: ' defaults '
+}
 
+
+function MySecondComponent( props ){
+  return <span>{props.title}</span>;
+}
+
+MySecondComponent.propTypes = {
+  title: PropTypes.string
+}
+
+render(
+  <h1 className='hola'>
+     1er
+     <span>2do </span>
+     <MyFirstComponent title="title first class... "></MyFirstComponent>
+     <MySecondComponent title="title second function... "></MySecondComponent>
+  </h1>
+  ,document.getElementById('root')
+);
 
