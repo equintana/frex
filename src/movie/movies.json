@@ -1,0 +1,27 @@
+[
+  {
+    "name": "Pride and perjudice" ,
+    "description": "Pride and Prejudice is a novel by Jane Austen, first published in 1813. The story charts the emotional development of the protagonist, Elizabeth Bennet, who learns the error of making hasty judgements and comes to appreciate the difference between the superficial and the essential.",
+    "image": "http://3.bp.blogspot.com/__kdloiikFIQ/SBYCH50Hh0I/AAAAAAAAENI/xinio3tWrlQ/s275/orgullo-y-prejuicio.jpg"
+  },
+  {
+    "name": "Jhon Wick: Chapter 2",
+    "description": "After returning to the criminal underworld to repay a debt, John Wick discovers that a large bounty has been put on his life.",
+    "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMjE2NDkxNTY2M15BMl5BanBnXkFtZTgwMDc2NzE0MTI@._V1_UX182_CR0,0,182,268_AL_.jpg"
+  },
+  {
+    "name": "The Devil Wears Prada",
+    "description": "A smart but sensible new graduate lands a job as an assistant to Miranda Priestly, the demanding editor-in-chief of a high fashion magazine.",
+    "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMTMyNjk4Njc3NV5BMl5BanBnXkFtZTcwNDkyMTEzMw@@._V1_UX182_CR0,0,182,268_AL_.jpg"
+  },
+  {
+    "name": "La la land",
+    "description": "A jazz pianist falls for an aspiring actress in Los Angeles.",
+    "image": "https://images-na.ssl-images-amazon.com/images/M/MV5BMzUzNDM2NzM2MV5BMl5BanBnXkFtZTgwNTM3NTg4OTE@._V1_SY1000_SX675_AL_.jpg"
+  },
+  {
+    "name": "Sophie's Choice ",
+    "description": "After spending time with his new neighbors,an aspiring writer realizes they are harboring deep secrets that will forever change him.",
+    "image": ""
+  }
+]
