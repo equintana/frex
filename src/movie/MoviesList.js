@@ -9,9 +9,9 @@ class MoviesList extends Component {
         this.props.movies.map( item=>
           <li>
             <div>
-            <img src={item.image} height="60" width="60" alt="-"/>
-            <p>{item.name}</p>
-            <p>{item.description}</p>
+            <img src={item.poster_path} height="60" width="60" alt="-"/>
+            <p>{item.title}</p>
+            <p>{item.overview}</p>
             </div>
           </li>
          )

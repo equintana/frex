@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import SearchForm from './SearchForm';
 import MoviesList from './MoviesList';
+import Request from 'superagent';
 
 class Movies extends Component {
   constructor(props){
@@ -8,8 +9,24 @@ class Movies extends Component {
       this.state = {
         searchTerm: '',
         searchType: 'name',
-        movies: props.movies
+        movies: []
       }
+  }
+
+  componentWillMount(){
+  }
+
+  search(term){
+    console.log(term);
+      var API_KEY = "0c33d41d79f487cb8d4a58ae46e663e0"
+      var url = "https://api.themoviedb.org/3/search/movie?query="+term+"&api_key="+API_KEY
+      Request.get(url).then((response) => {
+        // console.log("respo: ", response);
+        // return response.body.results
+        this.setState({
+          movies: response.body.results
+        })
+     });
   }
 
   render(){
@@ -30,11 +47,12 @@ class Movies extends Component {
     var targetName = evt.target.name;
     this.setState({
       [targetName]: targetValue,
-      movies: filterMovies(this.state.searchType, this.state.searchTerm, this.props.movies)
     });
+    this.search(targetValue);
   }
 
 }
+
 
 function filterMovies(field, term, movies){
   return movies.filter(function(item){
