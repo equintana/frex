@@ -21,26 +21,8 @@ export default function SearchForm({searchTerm, searchType, onChange}) {
 }
 
 SearchForm.propTypes = {
-  searchTerm: PropTypes.string,
-  searchType: PropTypes.string,
-  onChange:   PropTypes.func
+  searchTerm:  PropTypes.string,
+  searchType:  PropTypes.string,
+  onChange:    PropTypes.func
 }
 
-/*
-              <span className="input-group-addon">
-                  <input type="radio"
-                         name="searchType"
-                         value="name"
-                         onChange={onChange}
-                         checked={searchType === 'name'} />
-                          Name
-              </span>
-              <span className="input-group-addon">
-                  <input type="radio"
-                         name="searchType"
-                         value="description"
-                         onChange={onChange}
-                         checked={searchType === 'description'} />
-                         Description
-              </span>
-*/

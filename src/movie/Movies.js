@@ -1,5 +1,4 @@
 import React, { Component, PropTypes } from 'react';
-import Request from 'superagent';
 
 import SearchForm from './SearchForm';
 import MoviesList from './MoviesList';
@@ -7,38 +6,15 @@ import Loading from './Loading';
 
 export default class Movies extends Component {
   constructor(props){
-    super();
-      this.state = {
-        searchTerm: '',
-        searchType: 'name',
-        movies: [],
-        loading: false,
-        error: ""
-      }
-  }
-
-  componentDidMount(){
-    this.searchMovies("start");
-  }
-
-  searchMovies(queryTerm){
-    if (queryTerm){
-      this.setState({ loading: true });
-      var API_KEY = "0c33d41d79f487cb8d4a58ae46e663e0";
-      var url = "https://api.themoviedb.org/3/search/movie?query="+queryTerm+"&api_key="+API_KEY;
-      Request.get(url)
-        .then((response) => { return response.body.results; })
-        .then((data) => {
-          this.setState({ movies: data, loading: false }) })
-        .catch((errorMessage) => {
-          this.setState({ error: errorMessage });
-        });
+    super(props);
+    this.state = {
+      searchTerm: '',
+      searchType: 'name'
     }
   }
 
   render(){
-    var showLoading = this.state.loading;
-
+    var showLoading = this.props.loading;
     return(
       <div>
         <div className="panel panel-default">
@@ -52,7 +28,7 @@ export default class Movies extends Component {
         { (showLoading) ? (
             <Loading/>
           ) : (
-            <MoviesList movies={this.state.movies}/>
+            <MoviesList movies={this.props.movies} selectMovie={this.props.selectMovie}/>
           )
         }
       </div>
@@ -65,19 +41,13 @@ export default class Movies extends Component {
     this.setState({
       [targetName]: targetValue,
     });
-    this.searchMovies(targetValue);
+    this.props.searchMovies(targetValue);
   }
-
 }
-
 
 Movies.propTypes = {
-  movies: PropTypes.array,
+  movies:        PropTypes.array,
+  loading:       PropTypes.bool,
+  searchMovies:  PropTypes.func
 }
-
-// function filterMovies(field, term, movies){
-//   return movies.filter(function(item){
-//     return item[field].toLowerCase().includes(term.toLowerCase())
-//   });
-// }
 

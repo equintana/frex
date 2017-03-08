@@ -1,20 +1,18 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import Request from 'superagent';
 import Loading from './Loading';
 
 export default class MovieDetail extends Component {
-  constructor(){
-    super();
-      this.state = {
-        movie: {},
-        loading: false,
-        error: ""
-      }
-  }
 
   componentDidMount(){
-    this.getMovieById(this.props.params.id);
+    var nav_params = this.props;
+    var movie_id = nav_params.match.params.id;
+    if (nav_params.location.state && nav_params.location.state.fromMoviesList){
+     this.setState({ movie: this.props.selectMovie(movie_id) });
+    } else {
+      this.getMovieById(movie_id);
+    }
   }
 
   render(){
@@ -32,8 +30,10 @@ export default class MovieDetail extends Component {
        borderLeftColor: "#d9534f"
      }
     }
-    var movie = this.state.movie;
-    var genres = (movie.genres)? (movie.genres.map( l => l.name ).toString() ) : ("");
+
+    var movie =  (this.state && this.state.movie) ? this.state.movie : this.props.selectedMovie;
+    // var genres = (movie.genres)? (movie.genres.map( l => l.name ).toString() ) : ("");
+    var genres = "";
     var imageBasePath = "http://image.tmdb.org/t/p/w185";
 
     return (
